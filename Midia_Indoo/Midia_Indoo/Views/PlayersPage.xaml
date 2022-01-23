@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="WhiteSmoke"
+             NavigationPage.HasBackButton="False"
+             NavigationPage.HasNavigationBar="False"
+             x:Name="this"
+             xmlns:lib="clr-namespace:Midia_Indoo.Views.Lib"
+             xmlns:control="clr-namespace:Midia_Indoo.Views.Controls"
+             x:Class="Midia_Indoo.Views.PlayersPage">
+
+    <ContentPage.Content>
+        <Grid RowDefinitions="auto,*,80" Padding="0" Margin="0">
+            <control:TitleBaseView Titulo="Player" BackCommand="{Binding VoltarCommand}" />
+            <CollectionView x:Name="list" ItemsSource="{Binding Players}"  BackgroundColor="Transparent" Grid.Row="1">
+                <CollectionView.EmptyView>
+                    <Label Text="Nenhuma Player disponivel!" TextColor="DarkBlue" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                            <StackLayout Padding="20,10">
+                            <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItemView BackgroundColor="Transparent">
+                                        <Frame Margin="0" HasShadow="False" CornerRadius="20" Padding="15" BackgroundColor="Transparent">
+                                            <ImageButton Source="excluir" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                                                         Command="{Binding Source={x:Reference this},
+                                                Path=BindingContext.DeleteCommand}" CommandParameter="{Binding .}"
+                                                         BackgroundColor="Transparent"/>
+                                        </Frame>
+                                    </SwipeItemView>
+                                </SwipeView.RightItems>
+                                <Frame HeightRequest="100" CornerRadius="10" BackgroundColor="Transparent" Padding="0">
+                                    <Grid ColumnDefinitions="3*,1*" Padding="0">
+                                        <StackLayout BackgroundColor="LightGray" >
+                                            <Label Text="{Binding Nome}"  HorizontalOptions="CenterAndExpand"
+                                               VerticalOptions="CenterAndExpand" TextColor="Black"
+                                              FontSize="32"/>
+                                        </StackLayout>
+                                        <Frame Grid.Column="1" CornerRadius="10" BackgroundColor="{Binding Path=BackgroundColor, Source={x:Reference entry}}">
+                                            <Frame.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Source={x:Reference this}, Path=BindingContext.GoVideosCommand}" 
+                                                                  CommandParameter="{Binding .}"/>
+                                            </Frame.GestureRecognizers>
+                                            <Entry x:Name="entry" Text="{Binding Codigo}" IsVisible="false"  TextColor="Transparent">
+                                                <Entry.Triggers>
+                                                    <EventTrigger Event="TextChanged">
+                                                        <lib:UltimoAcessoTrigger />
+                                                    </EventTrigger>
+                                                </Entry.Triggers>
+                                            </Entry>
+                                        </Frame>
+                                    </Grid>
+                                </Frame>
+                        </SwipeView>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Button Text="Adicionar"
+                    HorizontalOptions="FillAndExpand"
+                    Padding="0" Margin="0"
+                    Grid.Row="2"
+                    FontSize="22" 
+                    Command="{Binding AddCommaand}"
+                    TextColor="White"
+                    BackgroundColor="Green"
+                    
+                   />
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

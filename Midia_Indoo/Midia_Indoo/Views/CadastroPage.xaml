@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasBackButton="False"
+             BackgroundColor="WhiteSmoke"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="Midia_Indoo.Views.CadastroPage">
+    <ContentPage.Content>
+                <StackLayout Padding="30"  VerticalOptions="CenterAndExpand"  TranslationY="-20" >
+            <Frame CornerRadius="20" Margin="0,3" HeightRequest="40">
+                    <Entry Placeholder="Nome" Text="{Binding Nome}" WidthRequest="300" Style="{StaticResource  EntryPrimary}" />
+                </Frame>
+              
+                <Frame CornerRadius="20" Margin="0,3" HeightRequest="40">
+                <Entry Placeholder="E-mail " Text="{Binding Email}" WidthRequest="300" Style="{StaticResource  EntryPrimary}" />
+                </Frame>
+            <Frame CornerRadius="20" Margin="0,3" HeightRequest="40">
+                    <Entry Placeholder="Senha" IsPassword="True" Text="{Binding Senha}" WidthRequest="350" Style="{StaticResource EntryPrimary}"/>
+                    </Frame>
+            <Button Text="Salvar" Command="{Binding AddUsuarioCommand}" BackgroundColor="Green"  Margin="30,10,30,0" Style="{StaticResource ButtonPrimary}"  />
+            <Button Text="Voltar" Command="{Binding VoltarCommand}"  TextTransform="None" TextColor="Red" BackgroundColor="Transparent"  Style="{StaticResource ButtonPrimary}"  />
+                </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

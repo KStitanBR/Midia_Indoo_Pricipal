@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Acr.UserDialogs" Version="7.2.0.534" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="5.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.10" />
+    <PackageReference Include="MonkeyCache.SQLite" Version="1.5.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
+    <PackageReference Include="Xamarin.Essentials.Interfaces" Version="1.7.0" />
+    <PackageReference Include="Prism.DryIoc.Forms" Version="8.0.0.1909" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\PlayersPage.xaml.cs">
+      <DependentUpon>PlayersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\VideosPage.xaml.cs">
+      <DependentUpon>VideosPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\MensagensPage.xaml.cs">
+      <DependentUpon>MensagensPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\Controls\TitleBaseView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\MensagensPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\RelatorioVideosPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <Import Project="..\..\Domain\Domain.projitems" Label="Shared" />
+
+</Project>

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="WhiteSmoke"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Midia_Indoo.Views.MenuPage">
+
+    <ContentPage.Content>
+        <Grid >
+            <ImageButton Source="logout" Command="{Binding LogOutCommand}" Margin="20" BackgroundColor="Transparent" HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand" />
+            <StackLayout Padding="20,5"   VerticalOptions="CenterAndExpand" >
+                
+                <Button Text="Player" 
+                        Style="{StaticResource ButtonPrimary}"
+                        Command="{Binding GoNavigateCommand}"
+                        CommandParameter="PlayersPage"/>
+                <Button Text="Mensagem" 
+                        Style="{StaticResource ButtonPrimary}"
+                        Command="{Binding GoNavigateCommand}" 
+                        CommandParameter="MensagensPage"/>
+                <Button Text="Nova Conta"
+                        Style="{StaticResource ButtonPrimary}" 
+                        Command="{Binding CadastrarCommand}"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

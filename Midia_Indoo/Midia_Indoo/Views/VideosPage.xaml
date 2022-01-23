@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="WhiteSmoke"
+             x:Name="this"
+             x:Class="Midia_Indoo.Views.VideosPage">
+    <ContentPage.Content>
+        <Grid RowDefinitions="auto,*,80">
+
+            <Frame  BackgroundColor="DarkBlue" Padding="0" VerticalOptions="StartAndExpand" CornerRadius="0" >
+                <StackLayout Orientation="Horizontal" Margin="10" Padding="0" BackgroundColor="Transparent">
+
+                    <ImageButton Source="back" BackgroundColor="Transparent" Aspect="Fill"
+                              VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Padding="7" 
+                                 Command="{Binding VoltarCommand, Mode=TwoWay}"/>
+
+                    <Label Text="{Binding Player.Nome}" FontSize="27" TextColor="White"
+                           VerticalOptions="CenterAndExpand"
+                           HorizontalOptions="CenterAndExpand" Grid.ColumnSpan="3"/>
+
+                    <StackLayout Orientation="Horizontal" Grid.Column="2" HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand" >
+                        <ImageButton Source="documento" BackgroundColor="Transparent" Command="{Binding RelatorioVideoCommand}"
+                                    Margin="10,0"/>
+                        <ImageButton Source="refresh" BackgroundColor="Transparent" Command="{Binding UpdadateVideoCommand}"
+                                   Margin="10,0"  />
+                    </StackLayout>
+
+                </StackLayout>
+            </Frame >
+            <Frame Grid.Row="1" Padding="0" Margin="10" 
+                   BorderColor="Transparent" CornerRadius="10">
+                <!--<RefreshView IsRefreshing="{Binding IsRefreshing}"
+                     RefreshColor="Teal"
+                     Command="{Binding RefreshCommand}">-->
+                    <CollectionView ItemsSource="{Binding ListVideos}" >
+                        <CollectionView.EmptyView>
+                            <Label Text="Nenhum video!" TextColor="DarkBlue" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                        </CollectionView.EmptyView>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Padding="5" BackgroundColor="Transparent">
+
+                                    <SwipeView>
+                                        <SwipeView.RightItems>
+                                            <SwipeItemView BackgroundColor="Transparent">
+                                                <Frame Margin="0" HasShadow="False" CornerRadius="20" Padding="15" BackgroundColor="Transparent">
+                                                    <ImageButton Source="excluir" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                                                         Command="{Binding Source={x:Reference this},
+                                                Path=BindingContext.DeleteCommand}" CommandParameter="{Binding .}"
+                                                         BackgroundColor="Transparent"/>
+                                                </Frame>
+                                            </SwipeItemView>
+                                        </SwipeView.RightItems>
+                                        <Frame BackgroundColor="LightGray" BorderColor="LightGray" 
+                               VerticalOptions="CenterAndExpand" Padding="0" HasShadow="False" CornerRadius="20" HeightRequest="100">
+
+                                            <Grid ColumnDefinitions="50,*,1*" Padding="0" Margin="0">
+                                                <Frame CornerRadius="0" 
+                                                   Padding="0"    
+                                                   BackgroundColor="DarkBlue" 
+                                                   HasShadow="False"
+                                                   BorderColor="DarkBlue"
+                                                   Margin="0">
+                                                    <Label Text="{Binding Codigo}" IsVisible="false"  FontSize="38" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                                    <!--<Label Text=""  FontSize="38" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>-->
+                                                </Frame>
+                                                <Label Text="{Binding Nome}" TextColor="DarkBlue" FontSize="18" Grid.Column="1" HorizontalTextAlignment="Start" Margin="10,0" VerticalTextAlignment="Center"/>
+                                                <StackLayout Grid.Column="2" Padding="20,0"   HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" >
+
+                                                    <BoxView  CornerRadius="40" WidthRequest="10" BackgroundColor="DarkBlue" HeightRequest="3"/>
+                                                    <BoxView  CornerRadius="40" BackgroundColor="DarkBlue" HeightRequest="3"/>
+                                                    <BoxView  CornerRadius="40" BackgroundColor="DarkBlue" HeightRequest="3"/>
+                                                </StackLayout>
+                                            </Grid>
+                                        </Frame>
+                                    </SwipeView>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                <!--</RefreshView>-->
+            </Frame>
+
+            <Button Text="Adicionar"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    Padding="0" Margin="0"
+                    Grid.Row="2"
+                    FontSize="22" 
+                    Command="{Binding AddVideoCommand}"
+                    TextColor="White"
+                    BackgroundColor="Green"
+                    
+                   />
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

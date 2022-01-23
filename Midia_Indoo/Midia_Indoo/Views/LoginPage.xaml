@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="WhiteSmoke"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Midia_Indoo.Views.LoginPage">
+
+
+
+    <Grid >
+        <StackLayout Padding="20"  VerticalOptions="CenterAndExpand" >
+            <Label Margin="10,0" Text="{Binding MsgErr}" IsVisible="{Binding Busy}" TextColor="Red" />
+
+            <Frame CornerRadius="20" Margin="0,10">
+                <Entry Placeholder="E-mail ou numero do telefone" Text="{Binding Email}" WidthRequest="300" Style="{x:StaticResource  EntryPrimary}" />
+            </Frame>
+            <Frame CornerRadius="20" BorderColor="{Binding ColoErr}" >
+
+                <Entry Placeholder="Digite a Senha" IsPassword="True" Text="{Binding Senha}" WidthRequest="350" Style="{x:StaticResource EntryPrimary}"/>
+            </Frame>
+            <Button Text="Entrar"
+                    BackgroundColor="Green"
+                    Margin="20,10" 
+                    Style="{x:StaticResource ButtonPrimary}" 
+                    Command="{Binding GoMenuCommand}"
+                    />
+        </StackLayout>
+
+    </Grid>
+</ContentPage>

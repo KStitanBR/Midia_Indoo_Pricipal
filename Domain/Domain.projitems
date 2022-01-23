@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>5a6778f2-e80c-4578-b78d-e4aaa815feaa</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Domain</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Helps\EndPoints.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helps\Enums\StatusEnum.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Mensagem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Player.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\PlayeReq.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ResponseService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\UltimoAcessoPlayer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Usuario.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\VideoReq.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Videos.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\BaseService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\MensagemServices.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\PlayeReqService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\PlayerService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\UsuarioService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\VideoReqService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\VideoService.cs" />
+  </ItemGroup>
+</Project>

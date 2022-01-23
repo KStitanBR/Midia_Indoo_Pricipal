@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="WhiteSmoke"
+             x:Name="this"
+             xmlns:control="clr-namespace:Midia_Indoo.Views.Controls"
+             x:Class="Midia_Indoo.Views.MensagensPage">
+    <ContentPage.Content>
+        <StackLayout Padding="0" Margin="0">
+            <control:TitleBaseView Titulo="Mensagem" BackCommand="{Binding VoltarCommand}" UpDateCommand="{Binding EnviarMsgCommand}" InvisibleRefresh="True"/>
+           
+            <Frame Grid.Row="1" Padding="0" Margin="0" BorderColor="Transparent" CornerRadius="10">
+                <CollectionView ItemsSource="{Binding mensagens}" Margin="0">
+                    <CollectionView.EmptyView>
+                        <Label Text="Não a nenhuma Mensagem!" TextColor="DarkBlue" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    </CollectionView.EmptyView>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="10,5">
+
+                                <SwipeView>
+                                    <SwipeView.RightItems>
+                                        <SwipeItemView BackgroundColor="Transparent">
+                                            <Frame Margin="0" HasShadow="False" CornerRadius="20" Padding="15" BackgroundColor="Transparent">
+                                                <ImageButton Source="excluir" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                                                         Command="{Binding Source={x:Reference this},
+                                                Path=BindingContext.DeleteCommand}" CommandParameter="{Binding .}"
+                                                         BackgroundColor="Transparent"/>
+                                            </Frame>
+                                        </SwipeItemView>
+                                    </SwipeView.RightItems>
+                                    <Frame BackgroundColor="White" BorderColor="LightGray" 
+                               VerticalOptions="CenterAndExpand" Padding="0" HasShadow="False" CornerRadius="0" HeightRequest="100">
+                                        <Grid ColumnDefinitions="60,*" Padding="0" Margin="0">
+                                            <Frame CornerRadius="0" HorizontalOptions="StartAndExpand"
+                                              BackgroundColor="DarkBlue"
+                                               VerticalOptions="FillAndExpand" 
+                                               HasShadow="False" BorderColor="DarkBlue" Margin="0">
+                                                <!--<Label Text="{Binding Codigo}" FontSize="23"
+                                                   TextColor="Black" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>-->
+                                            </Frame>
+                                            <Label Text="{Binding Msg}" TextColor="Gray"
+                                               FontSize="17" LineBreakMode="WordWrap" MaxLines="2" Grid.Column="1" HorizontalTextAlignment="Start"
+                                               Margin="10,0" VerticalTextAlignment="Center"/>
+
+                                        </Grid>
+                                    </Frame>
+                                </SwipeView>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Frame>
+            <Button Text="Adicionar"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    Padding="0" Margin="0"
+                    HeightRequest="65"
+                    Grid.Row="2"
+                    FontSize="22" 
+                    Command="{Binding AddMensagemCommand}"
+                    TextColor="White"
+                    BackgroundColor="Green"
+                    
+                   />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

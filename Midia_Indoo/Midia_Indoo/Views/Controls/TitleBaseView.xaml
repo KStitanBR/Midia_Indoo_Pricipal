@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Name="this"
+             x:Class="Midia_Indoo.Views.Controls.TitleBaseView">
+  <ContentView.Content>
+        <Frame HeightRequest="80" BackgroundColor="DarkBlue" CornerRadius="0"  Padding="0" Margin="0">
+
+            <StackLayout Orientation="Horizontal" Margin="10" Padding="0" BackgroundColor="Transparent">
+                <ImageButton x:Name="btnBack" Command="{Binding Source={x:Reference this}, Path=BackCommand}" Source="back" BackgroundColor="Transparent" Aspect="Fill"
+                              VerticalOptions="Center" HorizontalOptions="Start" Padding="7"/>
+                <Label x:Name="lblTitulo" Text="{Binding Titulo}"  BindingContext="{Reference this}"
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="CenterAndExpand"
+                        Padding="0" Margin="0"
+                        TextColor="White" FontSize="24"/>
+                <StackLayout BackgroundColor="Transparent" Orientation="Horizontal">
+                    <ImageButton x:Name="BtnRefresh" Command="{Binding Source={x:Reference this}, Path=UpDateCommand}"  IsVisible="false" Source="refresh" BackgroundColor="Transparent"
+                                   Margin="10,0"  />
+                </StackLayout>
+            </StackLayout>
+        </Frame >
+    </ContentView.Content>
+</ContentView>
